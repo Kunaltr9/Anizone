@@ -1,0 +1,162 @@
+jsx
+
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './components/Home';
+import Anime from './components/Anime';
+import Review from './components/Reivew';
+import Merchandise from './components/Merchandise';
+
+function App() {
+  const [user, setUser] = useState(null);
+
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home setUser={setUser} />
+        </Route>
+        <Route path="/anime">
+          <Anime user={user} />
+        </Route>
+        <Route path="/review">
+          <Review user={user} />
+        </Route>
+        <Route path="/merchandise">
+          <Merchandise user={user} />
+        </Route>
+      </Switch>
+    </Router>
+  );
+}
+
+export default App;
+
+
+java
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  // Authenticate user and return a token
+  res.json({ token: 'sample_token' });
+});
+
+app.listen(port, () => {
+  console.log(`AniZone backend listening at http://localhost:${port}`);
+});
+
+
+
+
+html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Collection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="anime-card">
+        <img src="anime-image.jpg" alt="Anime Image" class="anime-image">
+        <div class="anime-info">
+            <h2 class="anime-title">Anime Title</h2>
+            <p class="anime-description">Anime description goes here.</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+css
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.anime-card {
+    width: 300px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.anime-image {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: transform .3s;
+}
+
+.anime-image:hover {
+    transform: scale(1.1);
+}
+
+.anime-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.anime-title {
+    margin: 0;
+    color: #333;
+}
+
+.anime-description {
+    margin: 10px 0 0 0;
+    color: #666;
+}
+
+
+
+html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Collection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="anime-card">
+        <img src="anime-image.jpg" alt="Anime Image" class="anime-image">
+        <div class="anime-info">
+            <h2 class="anime-title">Anime Title</h2>
+            <p class="anime-description">Anime description goes here.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+css
+
+const animeImage = document.querySelector('.anime-image');
+
+animeImage.addEventListener('mouseover', () => {
+    animeImage.style.transform = 'scale(1.1)';
+});
+
+animeImage.addEventListener('mouseout', () => {
+    animeImage.style.transform = 'scale(1)';
+});
